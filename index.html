@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dịch tiếng Trung - Công xưởng</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c0392b">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
 <style>
   :root {
     color-scheme: light dark;
@@ -328,6 +332,12 @@
 
   updateLabels();
   updateCharCount();
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
 })();
 </script>
 </body>
